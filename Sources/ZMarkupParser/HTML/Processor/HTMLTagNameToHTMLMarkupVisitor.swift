@@ -172,7 +172,7 @@ struct HTMLTagNameToMarkupVisitor: HTMLTagNameVisitor {
             height = nil
         }
         
-        let attachment = ZNSTextAttachment(imageURL: srcURL, imageWidth: width, imageHeight: height, placeholderImage: placeholderImage(size: CGSize(width: width ?? 50, height: height ?? 50)))
+        let attachment = ZNSTextAttachmentCore(imageURL: srcURL, imageWidth: width, imageHeight: height, placeholderImage: placeholderImage(size: CGSize(width: width ?? 50, height: height ?? 50)))
         
         attachment.delegate = tagName.handler
         attachment.dataSource = tagName.handler

@@ -10,11 +10,11 @@ import ZNSTextAttachment
 
 final class ImageMarkup: Markup {
 
-    let attachment: ZNSTextAttachment
+    let attachment: ZNSTextAttachmentCore
     let width: CGFloat?
     let height: CGFloat?
     
-    init(attachment: ZNSTextAttachment, width: CGFloat?, height: CGFloat?) {
+    init(attachment: ZNSTextAttachmentCore, width: CGFloat?, height: CGFloat?) {
         self.attachment = attachment
         self.width = width
         self.height = height
