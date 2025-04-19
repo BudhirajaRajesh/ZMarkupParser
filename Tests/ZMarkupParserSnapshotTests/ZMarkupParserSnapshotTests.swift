@@ -71,17 +71,11 @@ final class ZHTMLToNSAttributedStringSnapshotTests: XCTestCase {
     
     var attributedHTMLString: NSAttributedString {
         let attributedString = NSMutableAttributedString(string: htmlString)
-        #if canImport(UIKit)
         attributedString.addAttributes([.foregroundColor: UIColor.orange], range: NSString(string: attributedString.string).range(of: "round-trip"))
         attributedString.addAttributes([.foregroundColor: UIColor.purple], range: NSString(string: attributedString.string).range(of: "zzzaabb"))
-        #elseif canImport(AppKit)
-        attributedString.addAttributes([.foregroundColor: NSColor.orange], range: NSString(string: attributedString.string).range(of: "round-trip"))
-        attributedString.addAttributes([.foregroundColor: NSColor.purple], range: NSString(string: attributedString.string).range(of: "zzzaabb"))
-        #endif
         return attributedString
     }
     
-    #if canImport(UIKit)
     private var testAsyncImageTextView: UITextView?
     private var testAsyncXCTestExpectation: XCTestExpectation?
     
@@ -172,7 +166,6 @@ final class ZHTMLToNSAttributedStringSnapshotTests: XCTestCase {
         }
         self.waitForExpectations(timeout: 5, handler: nil)
     }
-    #endif
 }
 
 extension ZHTMLToNSAttributedStringSnapshotTests {
@@ -194,13 +187,11 @@ extension ZHTMLToNSAttributedStringSnapshotTests {
 
 extension ZHTMLToNSAttributedStringSnapshotTests: ZNSTextAttachmentDelegate, ZNSTextAttachmentDataSource {
     func zNSTextAttachment(didLoad textAttachment: ZNSTextAttachment, to: ZResizableNSTextAttachment) {
-        #if canImport(UIKit)
         if let textView = testAsyncImageTextView {
             textView.layoutIfNeeded()
             assertSnapshot(matching: textView, as: .image(traits: .init(userInterfaceStyle: .light)), record: self.record, testName: "testAsyncImageNSAttributedString_uiTextView")
         }
         testAsyncXCTestExpectation?.fulfill()
-        #endif
     }
     
     func zNSTextAttachment(_ textAttachment: ZNSTextAttachment, loadImageURL imageURL: URL, completion: @escaping (Data, ZNSTextAttachmentDownloadedDataMIMEType?) -> Void) {

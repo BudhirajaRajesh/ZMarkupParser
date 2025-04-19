@@ -36,19 +36,10 @@ final class MarkupNSAttributedStringVisitorTests: XCTestCase {
         XCTAssertEqual(underlineBoldRawStringAttributes[.kern] as? Int, rootStyle.kern?.intValue, "should set kern from rootmarkup style")
         XCTAssertEqual(underlineBoldRawStringAttributes[.underlineStyle] as? Int, compoments.value(markup: underlineMarkup)?.underlineStyle?.rawValue, "should set underlineStyle from underlineMarkup style")
         
-        #if canImport(UIKit)
         if let font = underlineBoldRawStringAttributes[.font] as? UIFont {
             XCTAssertEqual(font.pointSize, 10, "should set font size from boldMarkup style")
             XCTAssertTrue((font.fontDescriptor.object(forKey: .face) as? String)?.contains("Semibold") ?? false, "should set font weight from boldMarkup style")
         }
-        #elseif canImport(AppKit)
-        if let font = underlineBoldRawStringAttributes[.font] as? NSFont {
-            XCTAssertEqual(font.pointSize, 10, "should set font size from boldMarkup style")
-            XCTAssertTrue((font.fontDescriptor.object(forKey: .face) as? String)?.contains("Semibold") ?? false, "should set font weight from boldMarkup style")
-        }
-        #endif
-        
-
         
         XCTAssertEqual(result.string, "boldTextunderlineWithBoldTextrawText", "should be boldTextunderlineWithBoldTextrawText in visitor result.")
     }

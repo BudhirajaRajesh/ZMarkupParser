@@ -8,31 +8,17 @@
 import Foundation
 @testable import ZMarkupParser
 import XCTest
-#if canImport(UIKit)
 import UIKit
-#elseif canImport(AppKit)
-import AppKit
-#endif
 
 final class MarkupStyleFontTests: XCTestCase {
     func testInit() {
-        #if canImport(UIKit)
-            let markupStyleFont = MarkupStyleFont(UIFont.systemFont(ofSize: 16, weight: .bold))
-            if case let .style(weight) = markupStyleFont.weight, weight == .bold {
-                 // Success
-                XCTAssertEqual(markupStyleFont.size, 16)
-             } else {
-                XCTFail()
-             }
-        #elseif canImport(AppKit)
-            let markupStyleFont = MarkupStyleFont(NSFont.boldSystemFont(ofSize: 16))
-            if case let .style(weight) = markupStyleFont.weight, weight == .bold {
-                 // Success
-                XCTAssertEqual(markupStyleFont.size, 16)
-             } else {
-                XCTFail()
-             }
-        #endif
+        let markupStyleFont = MarkupStyleFont(UIFont.systemFont(ofSize: 16, weight: .bold))
+        if case let .style(weight) = markupStyleFont.weight, weight == .bold {
+            // Success
+            XCTAssertEqual(markupStyleFont.size, 16)
+        } else {
+            XCTFail()
+        }
     }
     
     func testIsNil() {
@@ -58,28 +44,16 @@ final class MarkupStyleFontTests: XCTestCase {
     
     func testFontFamily() {
         let fontWeightStyle = MarkupStyleFont.FontFamily.familyNames(["Times New Roman", "Times", "serif"])
-        #if canImport(UIKit)
-            let font = fontWeightStyle.getFont(size: 16)
-            XCTAssertEqual(font?.familyName, "Times New Roman")
-            XCTAssertEqual(font?.pointSize, 16)
-        #elseif canImport(AppKit)
-            let font = fontWeightStyle.getFont(size: 16)
-            XCTAssertEqual(font?.familyName, "Times New Roman")
-            XCTAssertEqual(font?.pointSize, 16)
-        #endif
+        let font = fontWeightStyle.getFont(size: 16)
+        XCTAssertEqual(font?.familyName, "Times New Roman")
+        XCTAssertEqual(font?.pointSize, 16)
     }
     
     func testFontFamily2() {
         let fontWeightStyle = MarkupStyleFont.FontFamily.familyNames(["Invaild Font", "Times New Roman", "Times", "serif"])
-        #if canImport(UIKit)
-            let font = fontWeightStyle.getFont(size: 16)
-            XCTAssertEqual(font?.familyName, "Times New Roman")
-            XCTAssertEqual(font?.pointSize, 16)
-        #elseif canImport(AppKit)
-            let font = fontWeightStyle.getFont(size: 16)
-            XCTAssertEqual(font?.familyName, "Times New Roman")
-            XCTAssertEqual(font?.pointSize, 16)
-        #endif
+        let font = fontWeightStyle.getFont(size: 16)
+        XCTAssertEqual(font?.familyName, "Times New Roman")
+        XCTAssertEqual(font?.pointSize, 16)
     }
     
     func testCustomFontSizeAndBoldAndItalic() {

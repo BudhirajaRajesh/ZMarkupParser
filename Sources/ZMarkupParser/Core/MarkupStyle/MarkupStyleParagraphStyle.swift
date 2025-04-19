@@ -6,11 +6,7 @@
 //
 
 import Foundation
-#if canImport(UIKit)
 import UIKit
-#elseif canImport(AppKit)
-import AppKit
-#endif
 
 public struct MarkupStyleParagraphStyle: MarkupStyleItem {
     public var lineSpacing:CGFloat? = nil
@@ -78,19 +74,11 @@ public struct MarkupStyleParagraphStyle: MarkupStyleItem {
         self.lineHeightMultiple = paragraphStyle.lineHeightMultiple
         self.paragraphSpacingBefore = paragraphStyle.paragraphSpacingBefore
         self.hyphenationFactor = paragraphStyle.hyphenationFactor
-        #if canImport(UIKit)
         if #available(iOS 15.0, *) {
             self.usesDefaultHyphenation = paragraphStyle.usesDefaultHyphenation
         } else {
             // Fallback on earlier versions
         }
-        #elseif canImport(AppKit)
-        if #available(macOS 12.0, *) {
-            self.usesDefaultHyphenation = paragraphStyle.usesDefaultHyphenation
-        } else {
-            // Fallback on earlier versions
-        }
-        #endif
         self.tabStops = paragraphStyle.tabStops
         self.defaultTabInterval = paragraphStyle.defaultTabInterval
         self.textLists = paragraphStyle.textLists
@@ -213,7 +201,6 @@ extension MarkupStyleParagraphStyle {
             mutableParagraphStyle.hyphenationFactor = hyphenationFactor
         }
         
-        #if canImport(UIKit)
         if #available(iOS 15.0, *) {
             if let usesDefaultHyphenation = self.usesDefaultHyphenation {
                 mutableParagraphStyle.usesDefaultHyphenation = usesDefaultHyphenation
@@ -221,16 +208,6 @@ extension MarkupStyleParagraphStyle {
         } else {
             // Fallback on earlier versions
         }
-        #elseif canImport(AppKit)
-        if #available(macOS 12.0, *) {
-            if let usesDefaultHyphenation = self.usesDefaultHyphenation {
-                mutableParagraphStyle.usesDefaultHyphenation = usesDefaultHyphenation
-            }
-        } else {
-            // Fallback on earlier versions
-        }
-        #endif
-
         
         if let tabStops = self.tabStops {
             mutableParagraphStyle.tabStops = tabStops

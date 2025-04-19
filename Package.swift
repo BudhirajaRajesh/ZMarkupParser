@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "ZMarkupParser",
-    platforms: [.iOS(.v12), .macOS(.v10_14)],
+    platforms: [.iOS(.v12)],
     products: [
         .library(name: "ZMarkupParser", targets: ["ZMarkupParser"])
     ],

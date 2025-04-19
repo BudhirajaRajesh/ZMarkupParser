@@ -6,19 +6,11 @@
 //
 
 import Foundation
-#if canImport(UIKit)
 import UIKit
-#elseif canImport(AppKit)
-import AppKit
-#endif
 
 public struct MarkupStyleColor {
-#if canImport(UIKit)
     let color: UIColor
-#elseif canImport(AppKit)
-    let color: NSColor
-#endif
-       
+    
     init?(red: Int, green: Int, blue: Int, alpha: CGFloat) {
         guard red >= 0 && red <= 255,
               green >= 0 && green <= 255,
@@ -26,12 +18,7 @@ public struct MarkupStyleColor {
               alpha >= 0 && alpha <= 1 else {
             return nil
         }
-        #if canImport(UIKit)
-            self.color = UIColor(red: CGFloat(red)/255.0, green: CGFloat(green)/255.0, blue: CGFloat(blue)/255.0, alpha: alpha)
-        #elseif canImport(AppKit)
-            self.color = NSColor(red: CGFloat(red)/255.0, green: CGFloat(green)/255.0, blue: CGFloat(blue)/255.0, alpha: alpha)
-        #endif
-
+        self.color = UIColor(red: CGFloat(red)/255.0, green: CGFloat(green)/255.0, blue: CGFloat(blue)/255.0, alpha: alpha)
     }
     
     public init?(name: MarkupStyleColorName) {
@@ -48,7 +35,7 @@ public struct MarkupStyleColor {
         let rgb = sponsor.rgb
         self.init(red: rgb.0, green: rgb.1, blue: rgb.2, alpha: CGFloat(1.0))
     }
-
+    
     public init?(string: String) {
         let rgba: (Int,Int,Int,CGFloat)
         
@@ -109,8 +96,6 @@ public struct MarkupStyleColor {
     }
 }
 
-#if canImport(UIKit)
-
 extension MarkupStyleColor {
     
     public func getColor() -> UIColor {
@@ -121,17 +106,3 @@ extension MarkupStyleColor {
         self.color = color
     }
 }
-
-#elseif canImport(AppKit)
-
-extension MarkupStyleColor {
-    public func getColor() -> NSColor {
-        return color
-    }
-    
-    public init(color: NSColor) {
-        self.color = color
-    }
-}
-
-#endif

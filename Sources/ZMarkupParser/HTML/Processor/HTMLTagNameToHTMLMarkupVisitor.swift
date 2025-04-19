@@ -7,12 +7,7 @@
 
 import Foundation
 import ZNSTextAttachment
-
-#if canImport(UIKit)
 import UIKit
-#elseif canImport(AppKit)
-import AppKit
-#endif
 
 struct HTMLTagNameToMarkupVisitor: HTMLTagNameVisitor {
 
@@ -189,7 +184,6 @@ struct HTMLTagNameToMarkupVisitor: HTMLTagNameVisitor {
 
 private extension HTMLTagNameToMarkupVisitor {
     
-    #if canImport(UIKit)
     func placeholderImage(size: CGSize) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         
@@ -202,12 +196,4 @@ private extension HTMLTagNameToMarkupVisitor {
         
         return image
     }
-    #elseif canImport(AppKit)
-    func placeholderImage(size: CGSize) -> NSImage? {
-        let image = NSImage()
-        image.backgroundColor = .gray
-        image.size = size
-        return image
-    }
-    #endif
 }
