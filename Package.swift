@@ -11,31 +11,31 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", exact: "1.12.0"),
-         .package(url: "https://github.com/BudhirajaRajesh/ZNSTextAttachment", from: "1.1.9")
+        .package(url: "https://github.com/BudhirajaRajesh/ZNSTextAttachment", .branch("main"))
     ],
     targets: [
-         .target(
-             name: "ZMarkupParser",
-             dependencies: [
+        .target(
+            name: "ZMarkupParser",
+            dependencies: [
                 "ZNSTextAttachment"
-             ],
-             path: "Sources"
-         ),
-         .testTarget(
-             name: "ZMarkupParserTests",
-             dependencies: ["ZMarkupParser"]),
-         .testTarget(
-             name: "ZMarkupParserSnapshotTests",
-             dependencies: [
-                 "ZMarkupParser",
-                 .product(name: "SnapshotTesting", package: "swift-snapshot-testing")
-             ]
-         ),
-         .testTarget(
-             name: "ZMarkupParserPerformanceTests",
-             dependencies: [
-                 "ZMarkupParser"
-             ]
-         )
-     ]
+            ],
+            path: "Sources"
+        ),
+        .testTarget(
+            name: "ZMarkupParserTests",
+            dependencies: ["ZMarkupParser"]),
+        .testTarget(
+            name: "ZMarkupParserSnapshotTests",
+            dependencies: [
+                "ZMarkupParser",
+                .product(name: "SnapshotTesting", package: "swift-snapshot-testing")
+            ]
+        ),
+        .testTarget(
+            name: "ZMarkupParserPerformanceTests",
+            dependencies: [
+                "ZMarkupParser"
+            ]
+        )
+    ]
 )
