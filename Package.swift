@@ -11,7 +11,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", exact: "1.12.0"),
-        .package(url: "https://github.com/BudhirajaRajesh/ZNSTextAttachment", exact: "1.0.1")
+        .package(url: "https://github.com/BudhirajaRajesh/ZNSTextAttachment", .branchItem("release"))
     ],
     targets: [
         .target(
