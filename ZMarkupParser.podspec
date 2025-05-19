@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ZMarkupParser'
-  s.version          = '2.0.3'
+  s.version          = '2.0.4'
   s.summary          = 'A pure-Swift library to convert HTML strings into NSAttributedString with customized styles and tags.'
   s.description      = <<-DESC
 ZMarkupParser is a pure-Swift library that helps you convert HTML strings into NSAttributedString with customized styles and tags. It supports builder patterns, custom tag styles, class/id mapping, and async rendering for large HTML content.
@@ -15,5 +15,5 @@ ZMarkupParser is a pure-Swift library that helps you convert HTML strings into N
   s.pod_target_xcconfig = {
     'SWIFT_VERSION' => '5.0'
   }
-  s.dependency 'ZNSTextAttachment', '2.0.1'
+  s.dependency 'ZNSTextAttachment', '2.0.2'
 end 
