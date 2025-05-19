@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import ZNSTextAttachment
 import UIKit
 
 public extension UITextView {
@@ -40,7 +39,7 @@ public extension UILabel {
     func setHtmlString(_ string: NSAttributedString, with parser: ZHTMLParser) {
         let attributedString = parser.render(string)
         attributedString.enumerateAttribute(NSAttributedString.Key.attachment, in: NSMakeRange(0, attributedString.string.utf16.count), options: []) { (value, effectiveRange, nil) in
-            guard let attachment = value as? ZNSTextAttachment else {
+            guard let attachment = value as? ZNSTextAttachmentCore else {
                 return
             }
             
@@ -57,7 +56,7 @@ public extension UILabel {
     func setHtmlString(_ string: NSAttributedString, with parser: ZHTMLParser, completionHandler: ((NSAttributedString) -> Void)? = nil) {
         parser.render(string) { attributedString in
             attributedString.enumerateAttribute(NSAttributedString.Key.attachment, in: NSMakeRange(0, attributedString.string.utf16.count), options: []) { (value, effectiveRange, nil) in
-                guard let attachment = value as? ZNSTextAttachment else {
+                guard let attachment = value as? ZNSTextAttachmentCore else {
                     return
                 }
                 

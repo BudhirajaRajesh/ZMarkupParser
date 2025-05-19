@@ -8,7 +8,6 @@
 import XCTest
 @testable import ZMarkupParser
 import SnapshotTesting
-import ZNSTextAttachment
 
 final class ZHTMLToNSAttributedStringSnapshotTests: XCTestCase {
     private let record: Bool = false
@@ -92,7 +91,7 @@ final class ZHTMLToNSAttributedStringSnapshotTests: XCTestCase {
         testAsyncImageTextView = textView
         
         textView.attributedText.enumerateAttribute(NSAttributedString.Key.attachment, in: NSMakeRange(0, textView.attributedText.string.utf16.count), options: []) { (value, effectiveRange, nil) in
-            guard let attachment = value as? ZNSTextAttachment else {
+            guard let attachment = value as? ZNSTextAttachmentCore else {
                 return
             }
             attachment.register(textView.textStorage)
@@ -186,7 +185,7 @@ extension ZHTMLToNSAttributedStringSnapshotTests {
 }
 
 extension ZHTMLToNSAttributedStringSnapshotTests: ZNSTextAttachmentDelegate, ZNSTextAttachmentDataSource {
-    func zNSTextAttachment(didLoad textAttachment: ZNSTextAttachment, to: ZResizableNSTextAttachment) {
+    func zNSTextAttachment(didLoad textAttachment: ZNSTextAttachmentCore, to: ZResizableNSTextAttachment) {
         if let textView = testAsyncImageTextView {
             textView.layoutIfNeeded()
             assertSnapshot(matching: textView, as: .image(traits: .init(userInterfaceStyle: .light)), record: self.record, testName: "testAsyncImageNSAttributedString_uiTextView")
@@ -194,7 +193,7 @@ extension ZHTMLToNSAttributedStringSnapshotTests: ZNSTextAttachmentDelegate, ZNS
         testAsyncXCTestExpectation?.fulfill()
     }
     
-    func zNSTextAttachment(_ textAttachment: ZNSTextAttachment, loadImageURL imageURL: URL, completion: @escaping (Data, ZNSTextAttachmentDownloadedDataMIMEType?) -> Void) {
+    func zNSTextAttachment(_ textAttachment: ZNSTextAttachmentCore, loadImageURL imageURL: URL, completion: @escaping (Data, ZNSTextAttachmentDownloadedDataMIMEType?) -> Void) {
         URLSession.shared.dataTask(with: imageURL) { (data, response, error) in
             guard let data = data, error == nil else {
                 print(error?.localizedDescription as Any)
