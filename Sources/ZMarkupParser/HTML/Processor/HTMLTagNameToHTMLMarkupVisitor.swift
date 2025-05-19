@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import ZNSTextAttachment
 import UIKit
 
 struct HTMLTagNameToMarkupVisitor: HTMLTagNameVisitor {

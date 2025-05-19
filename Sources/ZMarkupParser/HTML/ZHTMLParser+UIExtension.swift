@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import ZNSTextAttachment
 import UIKit
 
 public extension UITextView {

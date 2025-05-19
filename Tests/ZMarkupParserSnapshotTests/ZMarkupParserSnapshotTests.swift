@@ -8,7 +8,6 @@
 import XCTest
 @testable import ZMarkupParser
 import SnapshotTesting
-import ZNSTextAttachment
 
 final class ZHTMLToNSAttributedStringSnapshotTests: XCTestCase {
     private let record: Bool = false

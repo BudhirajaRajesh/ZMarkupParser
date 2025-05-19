@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import ZNSTextAttachment
 
 final class ImageMarkup: Markup {
 

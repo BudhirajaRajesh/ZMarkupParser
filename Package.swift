@@ -11,14 +11,10 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", exact: "1.12.0"),
-        .package(url: "https://github.com/BudhirajaRajesh/ZNSTextAttachment", .exact("2.0.2"))
     ],
     targets: [
         .target(
             name: "ZMarkupParser",
-            dependencies: [
-                "ZNSTextAttachment"
-            ],
             path: "Sources"
         ),
         .testTarget(

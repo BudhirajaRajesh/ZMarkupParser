@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import ZNSTextAttachment
 
 public struct IMG_HTMLTagName: HTMLTagName {
     public let string: String = WC3HTMLTagName.img.rawValue

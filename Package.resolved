@@ -8,15 +8,6 @@
         "revision" : "26ed3a2b4a2df47917ca9b790a57f91285b923fb",
         "version" : "1.12.0"
       }
-    },
-    {
-      "identity" : "znstextattachment",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/BudhirajaRajesh/ZNSTextAttachment",
-      "state" : {
-        "revision" : "638457deb7be677749419fb14972ec83ebeadccb",
-        "version" : "2.0.2"
-      }
     }
   ],
   "version" : 2

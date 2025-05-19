@@ -15,5 +15,4 @@ ZMarkupParser is a pure-Swift library that helps you convert HTML strings into N
   s.pod_target_xcconfig = {
     'SWIFT_VERSION' => '5.0'
   }
-  s.dependency 'ZNSTextAttachment', '2.0.2'
 end 
