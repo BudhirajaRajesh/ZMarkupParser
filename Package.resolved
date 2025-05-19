@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/BudhirajaRajesh/ZNSTextAttachment",
       "state" : {
-        "branch" : "release",
-        "revision" : "5cbc12dfb3603ff613de51040c42c5a5adfc16dc"
+        "revision" : "7ab2269e52e8ba7005e53ba9f3cb970519b2852c",
+        "version" : "2.0.1"
       }
     }
   ],
